@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct CaffeineApp: App {
+    @State var isCaffeineOn: Bool = false
+    
+    
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra {
+            ContentView(isCaffeineOn: $isCaffeineOn)
+        } label: {
+            Label("Caffeine", systemImage: isCaffeineOn ? "cup.and.heat.waves.fill" : "cup.and.saucer.fill")
+                .contentTransition(.symbolEffect(.replace))
+                .animation(.default, value: isCaffeineOn)
         }
+        .menuBarExtraStyle(.automatic)
+       
     }
 }
