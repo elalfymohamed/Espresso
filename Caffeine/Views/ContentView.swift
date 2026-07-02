@@ -10,29 +10,33 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State private var isPresented: Bool = false
-
+    @State var selectedTime: String = ""
+    @Binding var isCaffeineOn : Bool
     var body: some View {
         VStack(){
-            HStack(spacing: 8) {
-                   Image(systemName: "cup.and.saucer.fill")
-                       .foregroundColor(isPresented ? .brown : .gray)
-                       .font(.headline)
-                   Text("Caffeine")
-                    .foregroundColor(isPresented ? .brown : .gray)
+            Text("Caffeine")
+                    .foregroundColor(isCaffeineOn ? .brown : .gray)
                     .font(.headline)
                 
-               }
-                .offset(x: -20, y: 10)
-                   
+            if !selectedTime.isEmpty{
+                Button(action:{
+                    SleepManager.shared.allowSleep()
+                    selectedTime = ""
+                    isCaffeineOn = false
+                }){
+                    Text(selectedTime)
+                        .foregroundColor(.black)
+                     .font(.headline)
+                }
+            }
             
-            
-            TimeMenuView()
+            DropDownMenu(selectedTime: $selectedTime, isCaffeineOn: $isCaffeineOn)
         }
         
     }
 }
 
 #Preview {
-    ContentView()
+    @Previewable @State var isCaffeineOn: Bool = false
+    ContentView(isCaffeineOn: $isCaffeineOn)
 }
