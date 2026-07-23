@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CustomTimePickerView: View {
     @Binding var selected: String
+    @Binding var sleectedTime: Int
 
     @State private var wakeUpTime = DateUtils.getTime(minutes: 5)
 
@@ -20,8 +21,8 @@ struct CustomTimePickerView: View {
                 displayedComponents: .hourAndMinute
 
             ).onChange(of: wakeUpTime) { _, newValue in
-                let formatter = DateUtils.getTimeString(from: newValue)
-                selected = "Stop at \(formatter)"
+                selected = DateUtils.getTimeString(from: newValue)
+                sleectedTime = DateUtils.getTimeMinutes(from: newValue)
             }
         }
         .padding()
@@ -30,6 +31,7 @@ struct CustomTimePickerView: View {
 }
 
 #Preview {
-    @Previewable @State var selectedTime = "Activate for"
-    CustomTimePickerView(selected: $selectedTime)
+    @Previewable @State var selected = "Activate for"
+    @Previewable @State var sleectedTime: Int = 0
+    CustomTimePickerView(selected: $selected, sleectedTime: $sleectedTime)
 }
