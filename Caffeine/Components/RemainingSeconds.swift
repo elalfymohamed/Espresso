@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct RemainingSeconds: View {
     @Binding var isCaffeineOn: Bool
     @Binding var selected: String
