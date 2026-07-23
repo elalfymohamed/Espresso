@@ -72,6 +72,3 @@ Assertions are tied to the process, so macOS automatically releases them if the 
 
 ---
 
-## License
-
-MIT — [LICENSE](LICENSE).
