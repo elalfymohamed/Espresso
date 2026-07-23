@@ -70,5 +70,4 @@ When you turn Caffeine off — manually or by timer expiry — the assertion is 
 
 Assertions are tied to the process, so macOS automatically releases them if the app quits unexpectedly. The app also releases explicitly on termination via `applicationWillTerminate`.
 
----
 
