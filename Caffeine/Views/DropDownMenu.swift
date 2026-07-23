@@ -6,8 +6,6 @@
 //
 import SwiftUI
 
-import SwiftUI
-
 struct DropDownMenu: View {
     @State private var showingCustomize = false
     @Binding  var selected: String
