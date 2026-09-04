@@ -1,5 +1,5 @@
 //
-//  CaffeineApp.swift
+//  EspressoApp.swift
 //  Caffeine
 //
 //  Created by Alfy on 29/03/2026.
@@ -15,18 +15,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 }
 
 @main
-struct CaffeineApp: App {
+struct EspressoApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @State var isCaffeineOn: Bool = false
+    @State var isEspressoOn: Bool = false
     
     var body: some Scene {
         MenuBarExtra {
-            ContentView(isCaffeineOn: $isCaffeineOn)
+            ContentView(isEspressoOn: $isEspressoOn)
                 .padding(.top)
         } label: {
-            Label("Caffeine", systemImage: isCaffeineOn ? "cup.and.heat.waves.fill" : "cup.and.saucer.fill")
+            Label("Espresso", systemImage: isEspressoOn ? "cup.and.heat.waves.fill" : "cup.and.saucer.fill")
                 .contentTransition(.symbolEffect(.replace))
-                .animation(.default, value: isCaffeineOn)
+                .animation(.default, value: isEspressoOn)
         }
         .menuBarExtraStyle(.window)
     }
