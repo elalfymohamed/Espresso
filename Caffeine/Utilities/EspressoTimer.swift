@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class CaffeineTimer: ObservableObject {
+final class EspressoTimer: ObservableObject {
     @Published private(set) var remainingSeconds: Int = 0
 
     private var timerCancellable: AnyCancellable?
