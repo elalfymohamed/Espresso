@@ -6,7 +6,7 @@
 //
 
 import Testing
-@testable import Caffeine
+@testable import Espresso
 
 struct CaffeineTests {
 
