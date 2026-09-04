@@ -1,8 +1,8 @@
-# ☕ Caffeine-macOS
+# ☕ Espresso
 
 A lightweight macOS menu bar app that keeps your Mac awake — for a set duration, or indefinitely.
 
-Built with SwiftUI and IOKit power management assertions (the same mechanism behind the built-in `caffeinate` command).
+Built with SwiftUI power management assertions (the same mechanism behind the built-in `caffeinate` command).
 
 ---
 
