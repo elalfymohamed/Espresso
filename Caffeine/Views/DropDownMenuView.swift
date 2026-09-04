@@ -1,16 +1,16 @@
 //
-//  DropDownMenu.swift
+//  DropDownMenuView.swift
 //  Caffeine
 //
 //  Created by Alfy on 29/03/2026.
 //
 import SwiftUI
 
-struct DropDownMenu: View {
+struct DropDownMenuView: View {
     @State private var showingCustomize = false
     @Binding  var selected: String
     @Binding var sleectedTime: Int
-    @Binding var isCaffeineOn: Bool
+    @Binding var isEspressoOn: Bool
 
     var body: some View {
         VStack {
@@ -19,7 +19,7 @@ struct DropDownMenu: View {
                     Button {
                         sleectedTime = item.value
                         selected = item.label
-                        isCaffeineOn = true
+                        isEspressoOn = true
                     } label: {
                         HStack {
                             Text(item.label)
@@ -51,7 +51,7 @@ struct DropDownMenu: View {
 
 #Preview {
     @Previewable @State var sleectedTime: Int = 0
-    @Previewable @State var isCaffeineOn: Bool = false
+    @Previewable @State var isEspressoOn: Bool = false
     @Previewable @State var selected: String = "Activate for"
-    DropDownMenu(selected: $selected, sleectedTime: $sleectedTime, isCaffeineOn: $isCaffeineOn)
+    DropDownMenuView(selected: $selected, sleectedTime: $sleectedTime, isEspressoOn: $isEspressoOn)
 }
