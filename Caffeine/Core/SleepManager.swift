@@ -34,7 +34,7 @@ final class SleepManager: NSObject {
 
     func preventSleep() {
         guard !assertionActive else { return }
-        let reason = "Caffeine app keeping system awake" as CFString
+        let reason = "Espresso app keeping system awake" as CFString
         let success = IOPMAssertionCreateWithName(
             kIOPMAssertionTypeNoDisplaySleep as CFString,
             IOPMAssertionLevel(kIOPMAssertionLevelOn),
