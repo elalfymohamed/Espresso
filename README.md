@@ -36,9 +36,9 @@ Built with SwiftUI power management assertions (the same mechanism behind the bu
 ### Build from source
 
 ```bash
-git clone https://github.com/elalfymohamed/Caffeine-macOS
-cd Caffeine-macOS
-open Caffeine-macOS.xcodeproj
+git clone https://github.com/elalfymohamed/Espresso
+cd Espresso
+open Espresso.xcodeproj
 ```
 
 Then press `⌘R` in Xcode.
