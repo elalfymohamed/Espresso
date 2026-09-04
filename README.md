@@ -27,21 +27,9 @@ Built with SwiftUI power management assertions (the same mechanism behind the bu
 
 ---
 
-## Installation
-
 ### Download
 
-<!--Grab the latest `.app` from the [Releases](../../releases) page, unzip it, and drag it to `/Applications`.-->
-
-### Build from source
-
-```bash
-git clone https://github.com/elalfymohamed/Espresso
-cd Espresso
-open Espresso.xcodeproj
-```
-
-Then press `⌘R` in Xcode.
+ - Grab the latest `.dmg` from the [Releases](../../releases) page, dmg it, and drag it to `/Applications`.
 
 ---
 
@@ -52,7 +40,7 @@ Then press `⌘R` in Xcode.
 3. Your Mac stays awake — the countdown shows time remaining.
 4. Click the countdown to stop early, or let it expire on its own.
 
-To verify it's working, run this in Terminal while Caffeine is active:
+To verify it's working, run this in Terminal while Espresso is active:
 
 ```bash
 pmset -g assertions
@@ -64,10 +52,7 @@ You should see the app's assertion listed under `PreventUserIdleDisplaySleep`.
 
 ## How it works
 
-Caffeine creates an **IOKit power management assertion** via `IOPMAssertionCreateWithName`, using the `kIOPMAssertionTypeNoDisplaySleep` type. This prevents both display sleep and idle system sleep for as long as the assertion is held.
+Espresso creates an **IOKit power management assertion** via `IOPMAssertionCreateWithName`, using the `kIOPMAssertionTypeNoDisplaySleep` type. This prevents both display sleep and idle system sleep for as long as the assertion is held.
 
-When you turn Caffeine off — manually or by timer expiry — the assertion is released with `IOPMAssertionRelease` and normal sleep behavior resumes.
-
-Assertions are tied to the process, so macOS automatically releases them if the app quits unexpectedly. The app also releases explicitly on termination via `applicationWillTerminate`.
-
+When you turn Espresso off — manually or by timer expiry — the assertion is released with `IOPMAssertionRelease` and normal sleep behavior resumes.
 
