@@ -10,45 +10,48 @@ import SwiftUI
 struct ContentView: View {
     @State var selected: String = "Activate for"
     @State var sleectedTime: Int = 0
-    @Binding var isCaffeineOn: Bool
+    @Binding var isEspressoOn: Bool
     
-    @State private var caffeineTimer = CaffeineTimer()
+    @State private var espressoTimer = EspressoTimer()
     
     var body: some View {
         VStack {
-            Text("Caffeine")
-                .foregroundColor(isCaffeineOn ? .brown : .gray)
+            Text("Espresso")
+                .foregroundColor(isEspressoOn ? .brown : .secondary)
                 .font(.headline)
+                .animation(.easeInOut(duration: 0.2), value: isEspressoOn)
 
-            if isCaffeineOn {
-                RemainingSeconds(isCaffeineOn: $isCaffeineOn, selected: $selected,caffeineTimer: caffeineTimer)
+            if isEspressoOn {
+                RemainingSecondsView(isEspressoOn: $isEspressoOn, selected: $selected,espressoTimer: espressoTimer)
              }
-            DropDownMenu(selected: $selected, sleectedTime: $sleectedTime, isCaffeineOn: $isCaffeineOn)
+            DropDownMenuView(selected: $selected, sleectedTime: $sleectedTime, isEspressoOn: $isEspressoOn)
+            Divider()
+            QuitButtonView()
         }
         .onAppear {
-                caffeineTimer.onExpire = { isCaffeineOn = false }
+            espressoTimer.onExpire = { isEspressoOn = false }
             }
-        .onChange(of: isCaffeineOn) { _, newValue in
+        .onChange(of: isEspressoOn) { _, newValue in
             if newValue {
-                caffeineTimer.startTimer(durationMinutes: sleectedTime)
+                espressoTimer.startTimer(durationMinutes: sleectedTime)
                 SleepManager.shared.preventSleep()
             } else {
-                caffeineTimer.stopTimer()
+                espressoTimer.stopTimer()
                 SleepManager.shared.allowSleep()
                 selected = "Activate for"
             }
         }
         .onChange(of: sleectedTime) { _, newDuration in
-            guard isCaffeineOn else { return }
-            caffeineTimer.startTimer(durationMinutes: newDuration)
+            guard isEspressoOn else { return }
+            espressoTimer.startTimer(durationMinutes: newDuration)
         }
-        
+       
     }
 
     
 }
 
 #Preview {
-    @Previewable @State var isCaffeineOn: Bool = false
-    ContentView(sleectedTime: 15, isCaffeineOn: $isCaffeineOn)
+    @Previewable @State var isEspressoOn: Bool = false
+    ContentView(sleectedTime: 15, isEspressoOn: $isEspressoOn)
 }
